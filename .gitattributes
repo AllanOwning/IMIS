@@ -1,3 +1,4 @@
 model/unet3plus_hemorrhagic.pth filter=lfs diff=lfs merge=lfs -text
 model/unet3plus_ischemic.pth filter=lfs diff=lfs merge=lfs -text
 model/Adam_best_model.pth filter=lfs diff=lfs merge=lfs -text
+model/ filter=lfs diff=lfs merge=lfs -text
