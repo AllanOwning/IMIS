@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf‐ɯ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Intelligent Medical Imaging System</title>
+    <link rel="icon" type="image/svg+xml" href="{{url_for('static', filename='iconforwebsite.svg')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="D:\IMIS\System\static\style.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+  </head>
+
+  <body>
+    <div id="header">
+      <img src="/static/Logoandtitle.png" width="300" height="60">
+    </div>
+
+      <!--First half of the website-->
+    <div id="first-half">
+      <p>INPUT</p>
+      <!--Drag and drop image field-->
+      <form action='/' method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <label>
+          <div id="dragndrop-wrapper">
+            <label for="dragndrop-input">Drop or click here to upload the CT scan image</label>
+            <input type='file' onchange="displayImage()" id="dragndrop-input" name="imageinput">
+            <img id="display-image" src="#" alt="" />
+          </div>
+        </label>
+      <!--submit/reset button field-->
+        <div id="buttons">
+          <input id="submit-button" type="submit" name="Submit">
+          <a href="/" id="reset-button">Reset</a>
+        </div>
+      </form>
+    </div>
+        
+    <!--Classification field-->
+    <div id="third-part">
+      <div id="analysis-field">
+        <h3>ANALYSIS</h3>
+          {% if prediction %}
+          <h3>
+            PREDICTION: <span id="prediction-result">{{prediction}} ({{confidence}}%)</span>
+          </h3>
+          {% endif %}
+        <h3>Description</h3>
+        <label>
+          Area highlighted compromises of (Insert color marking) markings which indicates (Insert type of brain indication) within the brain.
+        </label>
+        <img src="/static/GradCamPlaceholder.png" width="550" height="180">
+        <div id="categories">
+          <p class="catg1">HEMORRHAGIC <br>STROKE</p>
+          <p class="catg2">ISCHEMIC <br>STROKE</p>
+          <p class="catg3">NORMAL <br>BRAIN</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Link for the scripts-->
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+  </body>
+</html>
