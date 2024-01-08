@@ -1,11 +1,10 @@
-from flask import Flask, render_template, request
 import os
-
 import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
-from torchvision import models
 from PIL import Image
+from flask import Flask, render_template, request
+from torchvision import models
 
 app = Flask(__name__)
 model = models.vgg16()
@@ -49,5 +48,6 @@ def predict():
 
     return render_template('result.html', prediction=predictionResult, confidence=confidenceScore)
 
-if __name__ == '__main__':
-    app.run(port=3000, debug=True)
+if __name__ == "__main__":
+    app.run()
+

@@ -1,0 +1,13 @@
+runtime: python311
+readiness_check:
+  path: "/readiness_check"
+entrypoint: gunicorn -b :$PORT main:app
+env_variables:
+  GOOGLE_CLOUD_PROJECT: imis3-410612
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: auto
